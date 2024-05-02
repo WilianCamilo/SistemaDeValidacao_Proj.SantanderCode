@@ -2,10 +2,36 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class ProcessoSeletivo {
+
+    // Metedo main para testar os demais
     public static void main(String[] args) {
-        ligandoCandidato();
+        // metedo que quer testar
     }
 
+    // Metedo para selecionar os candidatos
+    static void selecaoCandidatos() {
+        String[] candidatos = { "Felipe", "Marcia", "Julia", "Paulo", "Augusto", "Monica", "Fabricio", "Mirela",
+                "Daniela", "Pati" };
+
+        int candidatosSelecionados = 0;
+        int candidatoAtual = 0;
+        double salarioBase = 2000.0;
+
+        while (candidatosSelecionados < 5 && candidatoAtual < candidatos.length) {
+            String candidato = candidatos[candidatoAtual];
+            double salarioPretendido = valorPretendido();
+
+            System.out.println("O candidato " + candidato + " solicitou este valor de salario: " + salarioPretendido);
+
+            if (salarioBase >= salarioPretendido) {
+                System.out.println("O candidato " + candidato + " foi selecionado para vaga.");
+                candidatosSelecionados++;
+            }
+            candidatoAtual++;
+        }
+    }
+
+    // Metedos para entrar em contato com o usuario selecionados
     static void ligandoCandidato() {
         String[] canditatos = { "Felipe", "Marcia", "Julia", "Paulo", "Augusto" };
         for (String candidato : canditatos) {
@@ -38,33 +64,7 @@ public class ProcessoSeletivo {
 
     }
 
-    // selecionando os candidatos
-
-    static void selecaoCandidatos() {
-
-        String[] candidatos = { "Felipe", "Marcia", "Julia", "Paulo", "Augusto", "Monica", "Fabricio", "Mirela",
-                "Daniela", "Pati" };
-
-        int candidatosSelecionados = 0;
-        int candidatoAtual = 0;
-        double salarioBase = 2000.0;
-
-        while (candidatosSelecionados < 5 && candidatoAtual < candidatos.length) {
-            String candidato = candidatos[candidatoAtual];
-            double salarioPretendido = valorPretendido();
-
-            System.out.println("O candidato " + candidato + " solicitou este valor de salario: " + salarioPretendido);
-
-            if (salarioBase >= salarioPretendido) {
-                System.out.println("O candidato " + candidato + " foi selecionado para vaga.");
-                candidatosSelecionados++;
-            }
-            candidatoAtual++;
-        }
-    }
-
-    // imprimindo os selecionados para o RH
-
+    // Metedo de impressão dos selecionados para o RH
     static void imprimirSelecionado() {
         String[] canditatos = { "Felipe", "Marcia", "Julia", "Paulo", "Augusto" };
 
@@ -75,8 +75,7 @@ public class ProcessoSeletivo {
         }
     }
 
-    // pequena simulação de analise de canditados
-
+    // Pequena simulação de analise de canditados
     static void analisarCandidato(double salarioPretendido) {
         double salarioBase = 2000.0;
 
@@ -92,12 +91,12 @@ public class ProcessoSeletivo {
 
     // *** Metedos Auxiliares ***
 
-    // metedo para simular a pretençção salarial
+    // Metedo para simular a pretençção salarial
     static double valorPretendido() {
         return ThreadLocalRandom.current().nextDouble(1800, 2200);
     }
 
-    // metedo para ligar pro candidato
+    // Metedo para ligar pro candidato
     static boolean atender() {
         return new Random().nextInt(3) == 1;
         // simula que se o valor entre 1 e 3 for igual a 1 ele atendeu.
